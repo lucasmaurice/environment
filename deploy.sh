@@ -6,4 +6,4 @@ ssh-keygen -t rsa -b 4096 -C "lucas.maurice@outlook.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 pbcopy < ~/.ssh/id_rsa.pub
-echo "Now go in your GitHub Settings and paste your SSH key"
+echo "Now go in your GitHub Settings and paste your SSH key."
