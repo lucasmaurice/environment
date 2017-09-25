@@ -26,3 +26,6 @@ sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install
 
 #INSTALL TMUX
 sudo apt install tmux
+
+#INSTALL HTOP
+sudo apt install htop
