@@ -17,6 +17,8 @@ brew install wget
 brew install tmux
 # install dotfile
 cp dotfiles/tmux.conf ~/.tmux.conf
+# install tmuxinator
+sudo gem install tmuxinator
 
 #### ZSH ####
 # install zsh
@@ -24,3 +26,7 @@ brew install zsh
 # install ohmyzsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+
+echo "" >> ~/.zshrc
+echo "export EDITOR='vim'" >> ~/.zshrc
+echo "# Environment Variables" >> ~/.zshrc
