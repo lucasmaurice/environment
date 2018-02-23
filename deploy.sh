@@ -26,6 +26,7 @@ sudo apt install htop
 
 #INSTALL TMUX
 sudo apt install tmux
+cp dotfiles/tmux.conf ~/.tmux.conf
 
 #INSTALL ZSH TERMINAL
 sudo apt install zsh
