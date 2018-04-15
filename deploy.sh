@@ -9,7 +9,13 @@ rm -R temp
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
 echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt-get update
-sudo apt-get install spotify-client
+sudo apt-get install spotify-client -y
+
+# GOOGLE CHROME
+sudo apt install -y libxss1 libappindicator1 libindicator7
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome*.deb
+rm google-chrome*.deb
 
 #CONFIGURE GITHUB
 git config --global user.name "Lucas Maurice"
@@ -22,12 +28,12 @@ ssh-add ~/.ssh/id_rsa
 #echo "Now go in your GitHub Settings and copy/paste your SSH key."
 
 #INSTALL HTOP
-sudo apt install htop
+sudo apt install htop -y
 
 #INSTALL TMUX
-sudo apt install tmux
+sudo apt install tmux -y
 cp dotfiles/tmux.conf ~/.tmux.conf
 
 #INSTALL ZSH TERMINAL
-sudo apt install zsh
+sudo apt install zsh -y
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
