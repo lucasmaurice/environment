@@ -18,8 +18,7 @@ sudo dpkg -i google-chrome*.deb
 rm google-chrome*.deb
 
 # Divers tools
-sudo apt install nmap tree
-
+sudo apt install nmap tree htop zsh tmux -y
 # Slack
 sudo snap install slack --classic
 
@@ -33,13 +32,8 @@ ssh-add ~/.ssh/id_rsa
 #cat ~/.ssh/id_rsa.pub
 #echo "Now go in your GitHub Settings and copy/paste your SSH key."
 
-#INSTALL HTOP
-sudo apt install htop -y
-
-#INSTALL TMUX
-sudo apt install tmux -y
+# Settings TMUX
 cp dotfiles/tmux.conf ~/.tmux.conf
 
-#INSTALL ZSH TERMINAL
-sudo apt install zsh -y
+# Settings ZSH
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
