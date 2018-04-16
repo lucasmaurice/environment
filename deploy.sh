@@ -33,11 +33,6 @@ git config --global user.email "lucas.maurice@outlook.com"
 ssh-keygen -t rsa -b 4096 -C "lucas.maurice@outlook.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
-#cat ~/.ssh/id_rsa.pub
-#echo "Now go in your GitHub Settings and copy/paste your SSH key."
-
-# Settings TMUX
-cp dotfiles/tmux.conf ~/.tmux.conf
 
 # AUTO DEPLOYMENT - INSTALL
 echo -e "${GREEN}Deployment:${NC} Installation of contents in ./installers."
