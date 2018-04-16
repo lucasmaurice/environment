@@ -20,6 +20,9 @@ rm google-chrome*.deb
 # NMAP
 sudo apt install nmap
 
+# Slack
+sudo snap install slack --classic
+
 #CONFIGURE GITHUB
 git config --global user.name "Lucas Maurice"
 git config --global user.email "lucas.maurice@outlook.com"
