@@ -17,8 +17,8 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome*.deb
 rm google-chrome*.deb
 
-# NMAP
-sudo apt install nmap
+# Divers tools
+sudo apt install nmap tree
 
 # Slack
 sudo snap install slack --classic
