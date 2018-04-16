@@ -22,3 +22,20 @@ case $SHELL in
 *)
    # assume something else
 esac
+
+mkdir ~/sara_ws/src/ -p
+cd ~/sara_ws
+catkin_make
+
+case $SHELL in
+*/zsh)
+   # assume Zsh
+   source ~/.zshrc
+   ;;
+*/bash)
+   # assume Bash
+   source ~/.bashrc
+   ;;
+*)
+   # assume something else
+esac
