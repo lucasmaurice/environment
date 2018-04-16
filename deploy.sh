@@ -17,6 +17,9 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome*.deb
 rm google-chrome*.deb
 
+# NMAP
+sudo apt install nmap
+
 #CONFIGURE GITHUB
 git config --global user.name "Lucas Maurice"
 git config --global user.email "lucas.maurice@outlook.com"
