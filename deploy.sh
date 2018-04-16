@@ -39,5 +39,26 @@ ssh-add ~/.ssh/id_rsa
 # Settings TMUX
 cp dotfiles/tmux.conf ~/.tmux.conf
 
+# AUTO DEPLOYMENT - INSTALL
+echo -e "${GREEN}Deployment:${NC} Installation of contents in ./installers."
+for f in `ls ./installers/*.sh `
+do
+    echo -e "${RED}Installation:${NC} $(echo $f | cut --delimiter='/' --fields=3 | cut --delimiter='.' --fields=1)"
+    ${f}
+done
+
+# AUTO DEPLOYMENT - CONFIG
+echo -e "${GREEN}Deployment:${NC} Installation of dotfiles in ./dotfiles"
+for f in `ls ./dotfiles`
+do
+    echo -e "${YELLOW}Config:${NC} $(echo $f | cut --delimiter='/' --fields=3)"
+    if [ -d ./dotfiles/${f} ]; then
+        mkdir -p ~/.${f}
+        cp -f -r ./dotfiles/${f}/* ~/.${f}
+    else
+        cp ./dotfiles/${f} ~/.${f}
+    fi
+done
+
 # Settings ZSH
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
