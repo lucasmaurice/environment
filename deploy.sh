@@ -53,6 +53,10 @@ if [ ! -f ~/.ssh/id_rsa ]; then
     ssh-add ~/.ssh/id_rsa
 fi
 
+# WALLPAPERS
+echo -e "${GREEN}Deployment:${NC} Install wallpapers"
+cp -fr ./wallpapers/* ~/Pictures/
+
 # AUTO DEPLOYMENT - INSTALL
 echo -e "${GREEN}Deployment:${NC} Installation of contents in ./installers."
 for f in `ls ./installers/*.sh `
