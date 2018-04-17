@@ -38,16 +38,20 @@ else
 fi
 
 # Divers tools
-sudo apt install nmap tree htop zsh tmux -y
+echo -e "${GREEN}Deployment:${NC} Install Divers Tools"
+sudo apt install git nmap tree htop zsh tmux -y
 
 # Slack
+echo -e "${GREEN}Deployment:${NC} Install Slack"
 sudo snap install slack --classic
 
 #CONFIGURE GITHUB
+echo -e "${GREEN}Deployment:${NC} Configure Git"
 git config --global user.name "Lucas Maurice"
 git config --global user.email "lucas.maurice@outlook.com"
 #NEXT ARE FOR SSH LOGIN CONFIGURATION ON GITHUB
 if [ ! -f ~/.ssh/id_rsa ]; then
+    echo -e "${GREEN}Deployment:${NC} Create SSH Key for Git"
     ssh-keygen -t rsa -b 4096 -C "lucas.maurice@outlook.com"
     eval "$(ssh-agent -s)"
     ssh-add ~/.ssh/id_rsa
@@ -79,4 +83,5 @@ do
 done
 
 # Settings ZSH
+echo -e "${GREEN}Deployment:${NC} Configure ZSH"
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
