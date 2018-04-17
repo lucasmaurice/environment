@@ -5,24 +5,41 @@ BLUE='\033[1;36m'
 NC='\033[0m' # No Color
 
 # ATOM
-wget -P temp https://atom.io/download/deb
-sudo dpkg -i temp/deb
-rm -R temp
+if hash atom 2>/dev/null; then
+    echo -e "${GREEN}Deployment:${NC} Atom already installed..."
+else
+    echo -e "${GREEN}Deployment:${NC} Install Atom"
+    wget -P temp https://atom.io/download/deb
+    sudo dpkg -i temp/deb
+    rm -R temp
+fi
+export EDITOR=atom
 
 # SPOTIFY
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
-echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-sudo apt-get update
-sudo apt-get install spotify-client -y
+if hash google-chrome 2>/dev/null; then
+    echo -e "${GREEN}Deployment:${NC} Spotify already installed..."
+else
+    echo -e "${GREEN}Deployment:${NC} Install Spotify"
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
+    echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+    sudo apt-get update
+    sudo apt-get install spotify-client -y
+fi
 
 # GOOGLE CHROME
-sudo apt install -y libxss1 libappindicator1 libindicator7
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome*.deb
-rm google-chrome*.deb
+if hash google-chrome 2>/dev/null; then
+    echo -e "${GREEN}Deployment:${NC} Google Chrome already installed..."
+else
+    echo -e "${GREEN}Deployment:${NC} Install Google Chrome"
+    sudo apt install -y libxss1 libappindicator1 libindicator7
+    wget -P temp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo dpkg -i temp/google-chrome-stable_current_amd64.deb
+    rm -R temp
+fi
 
 # Divers tools
 sudo apt install nmap tree htop zsh tmux -y
+
 # Slack
 sudo snap install slack --classic
 
@@ -30,9 +47,11 @@ sudo snap install slack --classic
 git config --global user.name "Lucas Maurice"
 git config --global user.email "lucas.maurice@outlook.com"
 #NEXT ARE FOR SSH LOGIN CONFIGURATION ON GITHUB
-ssh-keygen -t rsa -b 4096 -C "lucas.maurice@outlook.com"
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa
+if [ ! -f ~/.ssh/id_rsa ]; then
+    ssh-keygen -t rsa -b 4096 -C "lucas.maurice@outlook.com"
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_rsa
+fi
 
 # AUTO DEPLOYMENT - INSTALL
 echo -e "${GREEN}Deployment:${NC} Installation of contents in ./installers."
