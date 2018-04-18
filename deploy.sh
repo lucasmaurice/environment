@@ -4,6 +4,11 @@ GREEN='\033[1;32m'
 BLUE='\033[1;36m'
 NC='\033[0m' # No Color
 
+echo -e "${GREEN}Deployment:${NC} Update Aptitude packages."
+sudo apt update
+sudo apt-get -f install -y
+sudo apt upgrade -y
+
 # ATOM
 if hash atom 2>/dev/null; then
     echo -e "${GREEN}Deployment:${NC} Atom already installed..."
