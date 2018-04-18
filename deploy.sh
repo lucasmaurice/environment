@@ -58,8 +58,10 @@ cp -fr ./wallpapers/* ~/Pictures/
 echo -e "${GREEN}Deployment:${NC} Installation of contents in ./installers."
 for f in `ls ./installers/*.sh `
 do
-    echo -e "${RED}Installation:${NC} $(echo $f | cut --delimiter='/' --fields=3 | cut --delimiter='.' --fields=1)"
-    ${f}
+    if [ ! -d ${f} ]; then
+        echo -e "${RED}Installation:${NC} $(echo $f | cut --delimiter='/' --fields=3 | cut --delimiter='.' --fields=1)"
+        ${f}
+    fi
 done
 
 # AUTO DEPLOYMENT - CONFIG
