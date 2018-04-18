@@ -50,18 +50,6 @@ sudo apt install git nmap tree htop zsh tmux -y
 echo -e "${GREEN}Deployment:${NC} Install Slack"
 sudo snap install slack --classic
 
-#CONFIGURE GITHUB
-echo -e "${GREEN}Deployment:${NC} Configure Git"
-git config --global user.name "Lucas Maurice"
-git config --global user.email "lucas.maurice@outlook.com"
-#NEXT ARE FOR SSH LOGIN CONFIGURATION ON GITHUB
-if [ ! -f ~/.ssh/id_rsa ]; then
-    echo -e "${GREEN}Deployment:${NC} Create SSH Key for Git"
-    ssh-keygen -t rsa -b 4096 -C "lucas.maurice@outlook.com"
-    eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/id_rsa
-fi
-
 # WALLPAPERS
 echo -e "${GREEN}Deployment:${NC} Install wallpapers"
 cp -fr ./wallpapers/* ~/Pictures/
@@ -86,6 +74,18 @@ do
         cp ./dotfiles/${f} ~/.${f}
     fi
 done
+
+#CONFIGURE GITHUB
+echo -e "${GREEN}Deployment:${NC} Configure Git"
+git config --global user.name "Lucas Maurice"
+git config --global user.email "lucas.maurice@outlook.com"
+#NEXT ARE FOR SSH LOGIN CONFIGURATION ON GITHUB
+if [ ! -f ~/.ssh/id_rsa ]; then
+    echo -e "${GREEN}Deployment:${NC} Create SSH Key for Git"
+    ssh-keygen -t rsa -b 4096 -C "lucas.maurice@outlook.com"
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_rsa
+fi
 
 # Settings ZSH
 echo -e "${GREEN}Deployment:${NC} Configure ZSH"
