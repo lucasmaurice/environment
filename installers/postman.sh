@@ -1,5 +1,5 @@
 #!/bin/bash
-THE_PATH="/usr/bin/"
+THE_PATH="/usr/bin"
 THE_ZIP="Postman-linux-x64.tar.gz"
 THE_URL="https://dl.pstmn.io/download/latest/linux64"
 
@@ -20,12 +20,12 @@ sudo rm ${THE_PATH}/${THE_ZIP}
 UNZIPPED_DIR=$(ls -d $THE_PATH/*/)
 
 echo -e "${GREEN}DIR: ${NC} $UNZIPPED_DIR"
-echo -e "${GREEN}Fixing rights${NC}"
-sudo chmod 755 $UNZIPPED_DIR -R
-sudo chown $SUDO_USER:$SUDO_USER $UNZIPPED_DIR -R
+# echo -e "${GREEN}Fixing rights${NC}"
+# sudo chmod 755 $UNZIPPED_DIR -R
+# sudo chown $SUDO_USER:$SUDO_USER $UNZIPPED_DIR -R
 
 echo -e "${GREEN}Installing image and desktop icon${NC}"
 sudo cp postman-data/postman.png /usr/share/
-sudo cp postman-data/postman.desktop /usr/applications/
+sudo cp postman-data/postman.desktop /usr/share/applications
 
 ${UNZIPPED_DIR}Postman & echo -e "${BLUE}===== END -- Install Postman =====${NC}"
