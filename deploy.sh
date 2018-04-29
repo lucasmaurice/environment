@@ -22,9 +22,9 @@ shift $(( OPTIND - 1 ))
 if ! $HELP
 then
 	echo -e "${GREEN}Deployment:${NC} Update Aptitude packages."
-	sudo apt updat
-	sudo apt-get -f install -y -qq
-	sudo apt upgrade -y -qq
+	sudo apt update -qqq
+	sudo apt-get -f install -y -qqq
+	sudo apt upgrade -y -qqq
 
 	# ATOM
 	if hash atom 2>/dev/null; then
@@ -44,8 +44,8 @@ then
 	    echo -e "${GREEN}Deployment:${NC} Install Spotify"
 	    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
 	    echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-	    sudo apt-get update -qq
-	    sudo apt-get install spotify-client -y -qq
+	    sudo apt-get update -qqq
+	    sudo apt-get install spotify-client -y -qqq
 	fi
 
 	# GOOGLE CHROME
@@ -61,7 +61,7 @@ then
 
 	# Divers tools
 	echo -e "${GREEN}Deployment:${NC} Install Divers Tools"
-	sudo apt install git nmap tree htop zsh tmux vim -y -qq
+	sudo apt install git nmap tree htop zsh tmux vim -y -qqq
 
 	# Slack
 	echo -e "${GREEN}Deployment:${NC} Install Slack"
