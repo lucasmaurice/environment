@@ -110,7 +110,7 @@ then
 	fi
 
 	# Settings ZSH
-	if [! -d "~/.oh-my-zsh" ]; then
+	if [ ! -d "~/.oh-my-zsh" ]; then
 		echo -e "${GREEN}Deployment:${NC} Configure ZSH"
 		sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 	fi
