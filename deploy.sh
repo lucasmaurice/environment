@@ -61,7 +61,7 @@ then
 
 	# Divers tools
 	echo -e "${GREEN}Deployment:${NC} Install Divers Tools"
-	sudo apt install git nmap tree htop zsh tmux -y -qq
+	sudo apt install git nmap tree htop zsh tmux vim -y -qq
 
 	# Slack
 	echo -e "${GREEN}Deployment:${NC} Install Slack"
