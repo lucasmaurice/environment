@@ -63,10 +63,6 @@ then
 	echo -e "${GREEN}Deployment:${NC} Install Divers Tools"
 	sudo apt install git nmap tree htop zsh tmux vim -y -qqq
 
-	# Divers tools
-	echo -e "${GREEN}Deployment:${NC} Remove Divers Useless applications"
-	sudo apt remove -y -qq libreoffice-* evolution* empathy* gnome-photos brasero* cheese* gnome-mahjongg gnome-mines gnome-sudoku gnome-maps
-
 	# Slack
 	echo -e "${GREEN}Deployment:${NC} Install Slack"
 	sudo snap install slack --classic
