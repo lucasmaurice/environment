@@ -14,6 +14,8 @@ sudo apt update
 # Install ROS and dependencies
 sudo apt install -y ros-kinetic-desktop-full
 sudo apt install -y python-rosinstall python-rosinstall-generator python-wstool build-essential
+sudo apt install -y ros-kinetic-ros-control ros-kinetic-hardware-interface ros-kinetic-moveit
+#roscontrol hardwareinterface movit-commander
 
 # Initialise ROS
 sudo rosdep init
