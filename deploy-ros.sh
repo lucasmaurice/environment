@@ -29,6 +29,7 @@ cd ~/sara_ws/src
 # Get wm main repositories
 git clone git@github.com:WalkingMachine/sara_msgs.git
 git clone git@github.com:WalkingMachine/sara_launch.git
+git clone git@github.com:WalkingMachine/sara_behavior.git
 git clone git@github.com:WalkingMachine/wonderland.git
 git clone git@github.com:WalkingMachine/wm_object_detection.git
 
@@ -45,10 +46,16 @@ catkin_make
 source ~/sara_ws/src/sara_launch/sh_files/sararc.sh
 
 # Write sources in bashrc
-echo "# FOR ROS" >> ~/.bashrc
-echo "source ~/sara_ws/src/sara_launch/sh_files/sararc.sh" >> ~/.bashrc
+if !(grep --quiet "# FOR ROS" ~/.bashrc); then
+    echo Deploy Source to .bashrc
+    echo "# FOR ROS" >> ~/.bashrc
+    echo "source ~/sara_ws/src/sara_launch/sh_files/sararc.sh" >> ~/.bashrc
+fi
+
 
 # Write sources in zshrc
-echo "# FOR ROS" >> ~/.zshrc
-echo "source ~/sara_ws/src/sara_launch/sh_files/sararc.sh" >> ~/.zshrc
-
+if !(grep --quiet "# FOR ROS" ~/.zshrc); then
+    echo Deploy Source to .zshrc
+    echo "# FOR ROS" >> ~/.zshrc
+    echo "source ~/sara_ws/src/sara_launch/sh_files/sararc.sh" >> ~/.zshrc
+fi
