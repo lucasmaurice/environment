@@ -37,6 +37,10 @@ git clone git@github.com:WalkingMachine/wm_object_detection.git
 cd ~/sara_ws/src/wonderland
 ./install.sh
 
+# Install Behavior
+cd ~/sara_ws/src/sara_behaviors
+./install.sh
+
 
 # Build workspace
 cd ~/sara_ws
