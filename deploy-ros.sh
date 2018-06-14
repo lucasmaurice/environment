@@ -41,9 +41,9 @@ source ~/sara_ws/src/sara_launch/sh_files/sararc.sh
 
 # Write sources in bashrc
 echo "# FOR ROS" >> ~/.bashrc
-echo "source ~/sara_ws/src/sara_launch/sh_files/sararc.sh" > ~/.bashrc
+echo "source ~/sara_ws/src/sara_launch/sh_files/sararc.sh" >> ~/.bashrc
 
 # Write sources in zshrc
 echo "# FOR ROS" >> ~/.zshrc
-echo "source ~/sara_ws/src/sara_launch/sh_files/sararc.sh" > ~/.zshrc
+echo "source ~/sara_ws/src/sara_launch/sh_files/sararc.sh" >> ~/.zshrc
 
