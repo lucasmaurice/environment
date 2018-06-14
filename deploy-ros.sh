@@ -32,6 +32,11 @@ git clone git@github.com:WalkingMachine/sara_launch.git
 git clone git@github.com:WalkingMachine/wonderland.git
 git clone git@github.com:WalkingMachine/wm_object_detection.git
 
+# Install Wonderland
+cd ~/sara_ws/src/wonderland
+./install.sh
+
+
 # Build workspace
 cd ~/sara_ws
 catkin_make
