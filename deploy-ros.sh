@@ -29,7 +29,7 @@ cd ~/sara_ws/src
 # Get wm main repositories
 git clone git@github.com:WalkingMachine/sara_msgs.git
 git clone git@github.com:WalkingMachine/sara_launch.git
-git clone git@github.com:WalkingMachine/sara_behavior.git
+git clone git@github.com:WalkingMachine/sara_behaviors.git
 git clone git@github.com:WalkingMachine/wonderland.git
 git clone git@github.com:WalkingMachine/wm_object_detection.git
 
