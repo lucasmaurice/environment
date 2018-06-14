@@ -15,6 +15,7 @@ sudo apt update
 sudo apt install -y ros-kinetic-desktop-full
 sudo apt install -y python-rosinstall python-rosinstall-generator python-wstool build-essential
 sudo apt install -y ros-kinetic-ros-control ros-kinetic-hardware-interface ros-kinetic-moveit
+sudo apt install -y ffmpeg
 
 # Initialise ROS
 sudo rosdep init
@@ -23,15 +24,26 @@ rosdep update
 # Prepare workspace
 source /opt/ros/kinetic/setup.bash
 mkdir ~/sara_ws/src/ -p
+cd ~/sara_ws/src
+
+# Get wm main repositories
+git clone git@github.com:WalkingMachine/sara_msgs.git
+git clone git@github.com:WalkingMachine/sara_launch.git
+git clone git@github.com:WalkingMachine/wonderland.git
+git clone git@github.com:WalkingMachine/wm_object_detection.git
+
+# Build workspace
 cd ~/sara_ws
 catkin_make
 
+# Source workspace
+source ~/sara_ws/src/sara_launch/sh_files/sararc.sh
+
 # Write sources in bashrc
 echo "# FOR ROS" >> ~/.bashrc
-echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
-echo "source ~/sara_ws/devel/setup.bash" >> ~/.bashrc
+echo "source ~/sara_ws/src/sara_launch/sh_files/sararc.sh" > ~/.bashrc
 
 # Write sources in zshrc
 echo "# FOR ROS" >> ~/.zshrc
-echo "source /opt/ros/kinetic/setup.zsh" >> ~/.zshrc
-echo "source ~/sara_ws/devel/setup.zsh" >> ~/.zshrc
+echo "source ~/sara_ws/src/sara_launch/sh_files/sararc.sh" > ~/.zshrc
+
