@@ -16,6 +16,9 @@ sudo apt install -y ros-kinetic-desktop-full
 sudo apt install -y python-rosinstall python-rosinstall-generator python-wstool build-essential
 sudo apt install -y ros-kinetic-ros-control ros-kinetic-hardware-interface ros-kinetic-moveit
 sudo apt install -y ffmpeg
+sudo apt install -y python-imaging python-imaging-tk
+python -m pip install --user --upgrade pip
+python -m pip install Pillow
 
 # Initialise ROS
 sudo rosdep init
@@ -40,7 +43,6 @@ cd ~/sara_ws/src/wonderland
 # Install Behavior
 cd ~/sara_ws/src/sara_behaviors
 ./install.sh
-
 
 # Build workspace
 cd ~/sara_ws
