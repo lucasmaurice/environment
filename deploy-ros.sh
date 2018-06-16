@@ -4,7 +4,7 @@
 #
 # @author:        Lucas Maurice
 # @organisation:  Walking Machine
-# @date:          29/04/2018
+# @date:          14/06/2018
 
 # Prepare ROS installation
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
@@ -14,7 +14,7 @@ sudo apt update
 # Install ROS and dependencies
 sudo apt install -y ros-kinetic-desktop-full
 sudo apt install -y python-rosinstall python-rosinstall-generator python-wstool build-essential
-sudo apt install -y ros-kinetic-ros-control ros-kinetic-hardware-interface ros-kinetic-moveit
+sudo apt install -y ros-kinetic-ros-control ros-kinetic-hardware-interface ros-kinetic-moveit ros-kinetic-navigation
 sudo apt install -y ffmpeg
 
 # Initialise ROS
@@ -41,7 +41,6 @@ cd ~/sara_ws/src/wonderland
 cd ~/sara_ws/src/sara_behaviors
 ./install.sh
 
-
 # Build workspace
 cd ~/sara_ws
 catkin_make
@@ -55,7 +54,6 @@ if !(grep --quiet "# FOR ROS" ~/.bashrc); then
     echo "# FOR ROS" >> ~/.bashrc
     echo "source ~/sara_ws/src/sara_launch/sh_files/sararc.sh" >> ~/.bashrc
 fi
-
 
 # Write sources in zshrc
 if !(grep --quiet "# FOR ROS" ~/.zshrc); then
