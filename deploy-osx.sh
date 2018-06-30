@@ -26,6 +26,9 @@ brew install zsh
 # install ohmyzsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+#### NMAP ####
+# install nmap
+brew install nmap
 
 echo "" >> ~/.zshrc
 echo "export EDITOR='vim'" >> ~/.zshrc
