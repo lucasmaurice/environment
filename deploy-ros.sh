@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# This install automatically ROS and workspace for work on SARA
+# This install automatically ROS (kinetic) and workspace for work on SARA
 #
 # @author:        Lucas Maurice
 # @organisation:  Walking Machine
@@ -16,7 +16,9 @@ sudo apt install -y ros-kinetic-desktop-full
 sudo apt install -y python-rosinstall python-rosinstall-generator python-wstool build-essential
 sudo apt install -y ros-kinetic-ros-control ros-kinetic-hardware-interface ros-kinetic-moveit ros-kinetic-navigation
 sudo apt install -y ffmpeg
-sudo apt install -y python-imaging python-imaging-tk
+sudo apt install -y python-imaging python-imaging-tk python-pip
+pip install --upgrade pip
+pip install Pillow
 python -m pip install --user --upgrade pip
 python -m pip install Pillow
 
@@ -35,6 +37,7 @@ git clone git@github.com:WalkingMachine/sara_launch.git
 git clone git@github.com:WalkingMachine/sara_behaviors.git
 git clone git@github.com:WalkingMachine/wonderland.git
 git clone git@github.com:WalkingMachine/wm_object_detection.git
+git clone git@github.com:team-vigir/flexbe_behavior_engine.git
 
 # Install Wonderland
 cd ~/sara_ws/src/wonderland

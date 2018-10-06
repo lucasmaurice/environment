@@ -21,6 +21,13 @@ shift $(( OPTIND - 1 ))
 
 if ! $HELP
 then
+	#ASK FOR YOUR GITHUB CREDENTIALS
+	echo "Write your name:"
+	read namePerson
+	echo "Write your github email:"
+	read email
+
+	##INSTALLATION
 	echo -e "${GREEN}Deployment:${NC} Update Aptitude packages."
 	sudo apt update -qqq
 	sudo apt-get -f install -y -qqq
@@ -36,28 +43,6 @@ then
 	    rm -R temp
 	fi
 	export EDITOR=atom
-
-	# SPOTIFY
-	if hash spotify 2>/dev/null; then
-	    echo -e "${GREEN}Deployment:${NC} Spotify already installed..."
-	else
-	    echo -e "${GREEN}Deployment:${NC} Install Spotify"
-	    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
-	    echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-	    sudo apt-get update -qqq
-	    sudo apt-get install spotify-client -y -qqq
-	fi
-
-	# GOOGLE CHROME
-	if hash google-chrome 2>/dev/null; then
-	    echo -e "${GREEN}Deployment:${NC} Google Chrome already installed..."
-	else
-	    echo -e "${GREEN}Deployment:${NC} Install Google Chrome"
-	    sudo apt install -y libxss1 libappindicator1 libindicator7
-	    wget -P temp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-	    sudo dpkg -i temp/google-chrome-stable_current_amd64.deb
-	    rm -R temp
-	fi
 
 	# Divers tools
 	echo -e "${GREEN}Deployment:${NC} Install Divers Tools"
@@ -96,15 +81,18 @@ then
 		done
 	fi
 
+	#MAKE SURE EVERY PACKAGE AS ITS DEPENDENCIES
+	sudo apt-get -f install	
+
 	#CONFIGURE GITHUB
 	echo -e "${GREEN}Deployment:${NC} Configure Git"
-	git config --global user.name "Lucas Maurice"
-	git config --global user.email "lucas.maurice@outlook.com"
+	git config --global user.name $namePerson
+	git config --global user.email $email
 
 	#NEXT ARE FOR SSH LOGIN CONFIGURATION ON GITHUB
 	if [ ! -f ~/.ssh/id_rsa ]; then
 	    echo -e "${GREEN}Deployment:${NC} Create SSH Key for Git"
-	    ssh-keygen -t rsa -b 4096 -C "lucas.maurice@outlook.com"
+	    ssh-keygen -t rsa -b 4096 -C $email 
 	    eval "$(ssh-agent -s)"
 	    ssh-add ~/.ssh/id_rsa
 	fi
