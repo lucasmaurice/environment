@@ -5,22 +5,47 @@ BLUE='\033[1;36m'
 NC='\033[0m' # No Color
 
 INSTALL_AUTO=false
+LUCAS=false
+LUCASPARAM=false
 HELP=false
-while getopts "ahrv:x" opt; do
+while getopts "ahln" opt; do
 	case "$opt" in
 		a)	INSTALL_AUTO=true ;;
+		l)	LUCAS=true ; LUCASPARAM=true ;;
+		n)	LUCAS=false ; LUCASPARAM=true ;;
 		h)	echo "SYNOPSIS:"
 			echo "DJLs workspace deployment [options]"
 			echo "OPTIONS:"
-			echo " -a  automated installation in folders"
-			echo " -h  show this help synopsis"
+			echo " -h  Show this help synopsis"
+			echo " -a  Automated installation in folders"
+			echo " -l  Install for Lucas"
 			HELP=true  ;;
 	esac
 done
 shift $(( OPTIND - 1 ))
 
-if ! $HELP
+if ! $HELP 
 then
+	if ! $LUCASPARAM
+	then
+		read -e -p "
+		Are you Lucas? [Y/n] " YN
+
+		if [[ $YN == "y" || $YN == "Y" || $YN == "" ]]; then
+			LUCAS=true
+		fi
+	fi
+
+	if $LUCAS ; then
+		echo "Welcome Lucas!"
+		GITUSER="Lucas Maurice"
+		GITEMAIL="lucas.maurice@outlook.com"
+	else
+		echo "Welcome _NOT_ Lucas!"
+		read -e -p "Enter your git name:`echo $'\n> '`" GITUSER
+		read -e -p "Enter your git email:`echo $'\n> '`" GITEMAIL
+	fi
+
 	echo -e "${GREEN}Deployment:${NC} Update Aptitude packages."
 	sudo apt update -qqq
 	sudo apt-get -f install -y -qqq
@@ -98,13 +123,13 @@ then
 
 	#CONFIGURE GITHUB
 	echo -e "${GREEN}Deployment:${NC} Configure Git"
-	git config --global user.name "Lucas Maurice"
-	git config --global user.email "lucas.maurice@outlook.com"
+	git config --global user.name $GITUSER
+	git config --global user.email $GITEMAIL
 
 	#NEXT ARE FOR SSH LOGIN CONFIGURATION ON GITHUB
 	if [ ! -f ~/.ssh/id_rsa ]; then
 	    echo -e "${GREEN}Deployment:${NC} Create SSH Key for Git"
-	    ssh-keygen -t rsa -b 4096 -C "lucas.maurice@outlook.com"
+	    ssh-keygen -t rsa -b 4096 -C $GITEMAIL
 	    eval "$(ssh-agent -s)"
 	    ssh-add ~/.ssh/id_rsa
 	fi
