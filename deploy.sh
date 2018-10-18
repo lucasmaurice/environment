@@ -6,20 +6,19 @@ NC='\033[0m' # No Color
 
 INSTALL_AUTO=false
 LUCAS=false
-LUCASPARAM=false
+LUCASPARAM=true
 HELP=false
 while getopts "ahln" opt; do
 	case "$opt" in
-		a)	INSTALL_AUTO=true ;;
-		l)	LUCAS=true ; LUCASPARAM=true ;;
-		n)	LUCAS=false ; LUCASPARAM=true ;;
-		h)	echo "SYNOPSIS:"
-			echo "DJLs workspace deployment [options]"
-			echo "OPTIONS:"
-			echo " -h  Show this help synopsis"
-			echo " -a  Automated installation in folders"
-			echo " -l  Install for Lucas"
-			HELP=true  ;;
+	        a)      INSTALL_AUTO=true ;;
+                n)      LUCAS=false ; LUCASPARAM=true ;;
+                h)      echo "SYNOPSIS:"
+                        echo "DJLs workspace deployment [options]"
+                        echo "OPTIONS:"
+                        echo " -h  Show this help synopsis"
+                        echo " -a  Automated installation in folders"
+                        echo " -n  Install for people who are not Lucas"
+                        HELP=true  ;;
 	esac
 done
 shift $(( OPTIND - 1 ))
