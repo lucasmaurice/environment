@@ -48,7 +48,7 @@ PACKAGES=(
 	mtr
 )
 
-CASKS=(
+CASKS_PACKAGES=(
     iterm2
     slack
 	caffeine
@@ -142,7 +142,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 
 	# Installing Cask Apps
 	echo "${GREEN}Deployment:${NC} Installing Cask Apps"
-	brew cask install --force --require-sha ${CASKS[@]}
+	brew cask install --force --require-sha ${CASKS_PACKAGES[@]}
 
 	# Installing Python Apps
 	echo "${GREEN}Deployment:${NC} Installing Python Apps"
