@@ -65,6 +65,8 @@ PYTHON_PACKAGES=(
     virtualenv
     virtualenvwrapper
 	ansible
+	molecule
+	molecule[docker]
 	asn1crypto
 	bcrypt
 	cffi
