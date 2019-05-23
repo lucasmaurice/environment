@@ -7,7 +7,7 @@ export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/python/libexec/bin:$PATH
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME=robbyrussell
 
-plugins=(git git-flow github osx tmux tmuxinator)
+plugins=(git git-flow github osx tmux tmuxinator ruby)
 
 export LC_ALL="en_US.UTF-8"
 export LANG=en_US.UTF-8
@@ -17,7 +17,27 @@ source $ZSH/oh-my-zsh.sh
 
 unsetopt correct_all
 
-# User configuration
-
+# -------------------------------------------------------------------
+# Git
+# -------------------------------------------------------------------
 alias git=hub
 alias commit="git commit -S -m"
+
+alias ga='git add'
+alias gp='git push'
+alias gl='git log'
+alias gs='git status'
+alias gd='git diff'
+alias gm='git commit -m'
+alias gma='git commit -am'
+alias gb='git branch'
+alias gc='git checkout'
+alias gra='git remote add'
+alias grr='git remote rm'
+alias gpu='git pull'
+alias gcl='git clone'
+alias gta='git tag -a -m'
+alias gf='git reflog'
+alias gh='git hist'
+
+# User configuration
