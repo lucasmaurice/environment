@@ -41,6 +41,7 @@ PACKAGES=(
     tree
     vim
     wget
+    wakeonlan
     zsh
     nmap
     htop
