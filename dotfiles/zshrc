@@ -17,12 +17,9 @@ source $ZSH/oh-my-zsh.sh
 
 unsetopt correct_all
 
-# -------------------------------------------------------------------
-# Git
-# -------------------------------------------------------------------
+# Git Aliases
 alias git=hub
 alias commit="git commit -S -m"
-
 alias ga='git add'
 alias gp='git push'
 alias gl='git log'
@@ -39,5 +36,8 @@ alias gcl='git clone'
 alias gta='git tag -a -m'
 alias gf='git reflog'
 alias gh='git hist'
+
+# Export Code executable
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # User configuration
