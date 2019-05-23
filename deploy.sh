@@ -59,6 +59,7 @@ CASKS=(
 	spotify
 	dockey
 	postman
+	tunnelblick
 )
 
 PYTHON_PACKAGES=(
