@@ -7,7 +7,7 @@ export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/python/libexec/bin:$PATH
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME=robbyrussell
 
-plugins=(git brew git-flow github osx tmux tmuxinator)
+plugins=(git git-flow github osx tmux tmuxinator)
 
 export LC_ALL="en_US.UTF-8"
 export LANG=en_US.UTF-8
@@ -19,4 +19,5 @@ unsetopt correct_all
 
 # User configuration
 
+alias git=hub
 alias commit="git commit -S -m"
