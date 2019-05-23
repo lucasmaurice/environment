@@ -1,0 +1,6 @@
+# Machine-generated file - use "minicom -s" to change parameters.
+pu port             /dev/tty.usbserial-AL030P6R
+pu lock             /usr/local/Cellar/minicom/2.7.1/var
+pu baudrate         9600
+pu escape-key       Escape (Meta)
+pu rtscts           No
