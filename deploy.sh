@@ -46,11 +46,11 @@ PACKAGES=(
     htop
     minicom
     mtr
+    mas
 )
 
 CASKS_PACKAGES=(
     iterm2
-    slack
     caffeine
     docker
     transmission
@@ -147,6 +147,15 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     # Installing Python Apps
     echo "${GREEN}Deployment:${NC} Installing Python Apps"
     pip install ${PYTHON_PACKAGES[@]}
+
+    mas install 1176895641 # Spark
+    mas install 441258766  # Magnet
+    mas install 1295203466 # Microsoft RDP
+    mas install 494803304  # Wifi Explorer
+    mas install 1191449274 # Tooth Fairy
+    mas install 411643860  # Daisy Disk
+    mas install 803453959  # Slack
+    mas install 425424353  # The Unarchiver
 
     #NEXT ARE FOR SSH LOGIN CONFIGURATION ON GITHUB
     if [ ! -f ~/.ssh/id_rsa ]; then
