@@ -76,6 +76,7 @@ PYTHON_PACKAGES=(
     idna
     Jinja2
     MarkupSafe
+    testinfra
 )
 
 # Filter by system type

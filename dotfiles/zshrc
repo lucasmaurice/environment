@@ -9,8 +9,12 @@ ZSH_THEME=robbyrussell
 
 plugins=(git git-flow github osx tmux tmuxinator ruby)
 
-export LC_ALL="en_US.UTF-8"
-export LANG=en_US.UTF-8
+# Locale
+ export LANGUAGE="en"
+ export LANG="C"
+ export LC_MESSAGES="C"
+
+# Editor
 export EDITOR=vim
 
 source $ZSH/oh-my-zsh.sh
