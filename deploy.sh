@@ -193,6 +193,8 @@ do
         cp -f ./dotfiles/${f} ~/.${f}
     fi
 done
+source ~/.zshrc
+
 
 # CONFIGURE GITHUB
 echo "${GREEN}Deployment:${NC} Configure Git"
