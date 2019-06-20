@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 YELLOW='\033[1;33m'
 GREEN='\033[1;32m'
 BLUE='\033[1;36m'
@@ -85,7 +85,7 @@ PYTHON_PACKAGES=(
 
 # Filter by system type
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    echo "${GREEN}Begin:${NC} Run deployment as Linux system."
+    echo -e "${GREEN}Begin:${NC} Run deployment as Linux system."
 
     # Prepare
     echo -e "${GREEN}Deployment:${NC} Update Aptitude packages."
@@ -104,6 +104,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
         eval "$(ssh-agent -s)"
         ssh-add ~/.ssh/id_rsa
     fi
+
+    shopt -s expand_aliases
+    alias echo="echo -e"
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     echo "${GREEN}Begin:${NC} Run deployment as Mac OS system."
@@ -150,10 +153,6 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     echo "${GREEN}Deployment:${NC} Installing Cask Apps"
     brew cask install --force --require-sha ${CASKS_PACKAGES[@]}
 
-    # Installing Python Apps
-    echo "${GREEN}Deployment:${NC} Installing Python Apps"
-    pip install ${PYTHON_PACKAGES[@]}
-
     mas install 1176895641 # Spark
     mas install 441258766  # Magnet
     mas install 1295203466 # Microsoft RDP
@@ -174,6 +173,15 @@ else
         echo "${YELLOW}Error:${NC} OS is not supported."
         exit 1
 fi
+
+# Installing Python Apps
+echo "${GREEN}Deployment:${NC} Installing Python Apps"
+pip install ${PYTHON_PACKAGES[@]}
+
+# Installing Docker
+echo "${GREEN}Deployment:${NC} Installing Docker"
+sudo sh -c "$(curl -fsSL https://get.docker.com/)"
+sudo usermod -aG docker $(whoami)
 
 
 # AUTO DEPLOYMENT - CONFIG
