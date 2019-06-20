@@ -19,6 +19,7 @@ PACKAGES=(
     gifsicle
     git
     graphviz
+    guake
     htop
     jq 
     lynx
