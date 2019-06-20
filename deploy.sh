@@ -13,20 +13,21 @@ PACKAGES=(
     ack
     autoconf
     automake
-    boot2docker
+    curl
     ffmpeg
     gettext
     gifsicle
     git
     graphviz
-    hub
-    jq
-    libjpeg
-    libmemcached 
+    htop
+    jq 
     lynx
     markdown
     memcached
     mercurial
+    minicom
+    mtr
+    nmap
     npm
     pkg-config
     postgresql
@@ -34,20 +35,23 @@ PACKAGES=(
     python3
     pypy
     rename
-    ssh-copy-id
-    terminal-notifier
-    the_silver_searcher
     tmux
+    traceroute
     tree
     vim
     wget
     wakeonlan
     zsh
-    nmap
-    htop
-    minicom
-    mtr
+)
+
+# Packages to install
+PACKAGES_MACOS_ONLY=(
     mas
+    ssh-copy-id
+    terminal-notifier
+    the_silver_searcher
+    boot2docker
+    libjpeg
 )
 
 CASKS_PACKAGES=(
@@ -91,7 +95,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
     # Divers tools
     echo -e "${GREEN}Deployment:${NC} Installing Divers Tools"
-    sudo apt install git nmap tree htop zsh tmux vim -y -qqq
+    sudo apt install ${PACKAGES[@]} -y -qqq
 
     #NEXT ARE FOR SSH LOGIN CONFIGURATION ON GITHUB
     if [ ! -f ~/.ssh/id_rsa ]; then
@@ -138,9 +142,9 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     echo "${GREEN}Deployment:${NC} Cleaning Brew"
     brew cleanup
 
-    Installing Cask
+    # Installing Cask
     echo "${GREEN}Deployment:${NC} Installing Cask"
-    # brew install caskroom/cask
+    brew install caskroom/cask
 
     # Installing Cask Apps
     echo "${GREEN}Deployment:${NC} Installing Cask Apps"
@@ -168,6 +172,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     fi
 else
         echo "${YELLOW}Error:${NC} OS is not supported."
+        exit 1
 fi
 
 
