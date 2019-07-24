@@ -7,6 +7,7 @@ NC='\033[0m' # No Color
 # Git User
 GITUSER="Lucas Maurice"
 GITEMAIL="lucas.maurice@outlook.com"
+GITSIGNINGKEY="B0FE24A96FE20EE7"
 
 # Packages to install
 PACKAGES=(
@@ -185,6 +186,7 @@ done
 echo "${GREEN}Deployment:${NC} Configure Git"
 git config --global user.name $GITUSER
 git config --global user.email $GITEMAIL
+git config --global user.signingkey $GITSIGNINGKEY
 
 # DEPLOYIMG ZSH
 echo "${GREEN}Deployment:${NC} Configure ZSH"
